@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/boovius/travel-muse#readme",
   "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
     "babel-preset-react": "^6.3.13",
     "file-loader": "^0.8.5",
     "react-hot-loader": "^1.3.0",
