@@ -1,0 +1,27 @@
+{
+  "name": "travel-muse",
+  "version": "1.0.0",
+  "description": "travel inspired",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boovius/travel-muse.git"
+  },
+  "keywords": [
+    "travel",
+    "react"
+  ],
+  "author": "boovius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boovius/travel-muse/issues"
+  },
+  "homepage": "https://github.com/boovius/travel-muse#readme",
+  "devDependencies": {
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

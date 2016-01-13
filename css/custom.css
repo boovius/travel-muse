@@ -1,0 +1,14 @@
+/*
+body {
+  background-color: #4dffd1;
+}
+*/
+
+.landing {
+  background-image: url('../images/signs.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*opacity: .4;
+  background-color: red;*/
+}
+
