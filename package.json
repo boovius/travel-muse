@@ -22,6 +22,7 @@
   "homepage": "https://github.com/boovius/travel-muse#readme",
   "devDependencies": {
     "babel-preset-react": "^6.3.13",
+    "file-loader": "^0.8.5",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"
   },
