@@ -7,13 +7,14 @@ module.exports = {
 
   output: {
     path: __dirname + "/dist",
+    publicPath: 'http://localhost:8080/',
     filename: "app.js"
   },
   module: {
     loaders: [
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: "style-loader!css-loader!autoprefixer-loader"
       },
       {
         test: /\.js$/,
@@ -23,6 +24,10 @@ module.exports = {
       {
         test: /\.html$/,
         loaders: ["file?name=[name].[ext]"],
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loaders: ["url-loader?limit=8192"],
       },
     ],
   },
