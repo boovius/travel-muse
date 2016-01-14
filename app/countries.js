@@ -1,67 +1,64 @@
 var React = require('react');
 var merge = require('merge');
+var Country = require('./country');
 
-var countriesContainerStyles = {
-  display: 'flex',
-  flexFlow: 'row wrap',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-}
+var COUNTRIES_DATA = [
+  {name: 'Costa Rica'}, {name: 'Nicaragua'}
+];
 
-var Country = React.createClass({
+var Countries = React.createClass({
   getInitialState (){
     return {
-      hovered: false
+      hovered: false,
     }
   },
 
   toggleHover (){
-    this.setState({hovered: !this.state.hovered});
-  },
-
-  styles: {
-    country: {
-      padding: 5,
-      listStyle: 'none',
-      border: '1px solid black',
-      borderRadius: 4,
-      cursor: 'pointer',
-      fontFamily: "'Amatic SC', cursive",
-      fontWeight: 'bold'
-    },
-    hover: {
-      border: '1px solid white',
-      color: 'white',
-    }
+    this.setState({
+      hovered: !this.state.hovered,
+    });
   },
 
   render() {
-    var hoverStateStyle = merge(
-        this.state.hovered && this.styles.hover,
-        this.styles.country
-    );
-    return(
-      <li style={hoverStateStyle}
-      onMouseEnter={this.toggleHover}
-      onMouseLeave={this.toggleHover}
-      >{this.props.name}</li>
-    );
-  }
-});
+    var styles = {
+      container: {
+        display: 'flex',
+        flexFlow: 'row wrap',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: 'rgba(237, 163, 59, .9)',
+        width: '5%',
+        borderRadius: '3em',
+        padding: 0,
+      },
+      hover: {
+        width: '100%',
+        padding: 20,
+        borderRadius: 0,
+      }
+    };
 
-var COUNTRIES_DATA = [{name: 'Costa Rica'}, {name: 'Nicaragua'}];
+    var countriesStyles = merge(
+        styles.container,
+        this.state.hovered && styles.hover
+    );
 
-module.exports = React.createClass({
-  render() {
     var countries = COUNTRIES_DATA.map((country) => {
       return <Country key={country.name} name={country.name}/>
     });
+
     return(
       <div id='countries-drawer' style={this.props.drawerStyles}>
-        <ul id='countries-container' style={countriesContainerStyles}>
+        <ul id='countries-container'
+          style={countriesStyles}
+          onMouseEnter={this.toggleHover}
+          onMouseLeave={this.toggleHover}
+          >
           {countries}
         </ul>
       </div>
     );
   }
 });
+
+module.exports = Countries;

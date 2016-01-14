@@ -56,7 +56,10 @@ var countriesDrawerStyles = {
   position: 'absolute',
   bottom: '2%',
   width: '100%',
-  backgroundColor: 'rgba(237, 163, 59, .6)',
+  display: 'flex',
+  flexFlow: 'row wrap',
+  justifyContent: 'space-around',
+  alignItems: 'center',
 }
 
 var LandingPage = React.createClass({
