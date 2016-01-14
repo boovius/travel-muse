@@ -1,6 +1,6 @@
-var React = require('react');
-var merge = require('merge');
-var Country = require('./country');
+import React from 'react';
+import merge from 'merge';
+import Country from './country';
 
 var COUNTRIES_DATA = [
   {name: 'Costa Rica'}, {name: 'Nicaragua'}
@@ -20,7 +20,7 @@ var Countries = React.createClass({
   },
 
   render() {
-    var styles = {
+    let styles = {
       container: {
         display: 'flex',
         flexFlow: 'row wrap',

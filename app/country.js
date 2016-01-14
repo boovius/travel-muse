@@ -1,6 +1,5 @@
-var React = require('react');
-var merge = require('merge');
-
+import React from 'react';
+import merge from 'merge';
 
 var Country = React.createClass({
   getInitialState (){
@@ -14,7 +13,7 @@ var Country = React.createClass({
   },
 
   render() {
-    styles = {
+    let styles = {
       country: {
         padding: 5,
         listStyle: 'none',

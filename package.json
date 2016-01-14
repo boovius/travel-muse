@@ -4,7 +4,8 @@
   "description": "travel inspired",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline"
+    "webpack-server": "webpack-dev-server --hot --progress --colors",
+    "start": "npm run webpack-server"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
