@@ -29,7 +29,7 @@ var Country = React.createClass({
         color: 'white',
       },
       display: {
-        display: 'none'
+        display: 'none',
       }
     };
 

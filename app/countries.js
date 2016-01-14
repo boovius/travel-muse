@@ -39,13 +39,21 @@ var Countries = React.createClass({
         padding: 20,
         borderRadius: 0,
         marginLeft: 0,
-      }
+      },
+      display: {
+        display: 'block',
+      },
+      hide: {
+        display: 'none',
+      },
     };
 
     var countriesStyles = merge(
         styles.container,
         this.state.hovered && styles.hover
     );
+
+    var exploreStyle = this.state.hovered ? styles.hide : styles.display;
 
     var countries = COUNTRIES_DATA.map((country) => {
       return (
@@ -64,6 +72,7 @@ var Countries = React.createClass({
           onMouseEnter={this.toggleHover}
           onMouseLeave={this.toggleHover}
           >
+          <span style={exploreStyle}>explore</span>
           {countries}
         </ul>
       </div>
