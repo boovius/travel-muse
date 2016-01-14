@@ -27,12 +27,16 @@ var Country = React.createClass({
       hover: {
         border: '1px solid white',
         color: 'white',
+      },
+      display: {
+        display: 'none'
       }
     };
 
     var hoverStateStyle = merge(
         this.state.hovered && styles.hover,
-        styles.country
+        styles.country,
+        this.props.display && styles.display
     );
 
     return(

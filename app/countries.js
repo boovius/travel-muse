@@ -26,15 +26,19 @@ var Countries = React.createClass({
         flexFlow: 'row wrap',
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: 'rgba(237, 163, 59, .9)',
-        width: '5%',
+        backgroundColor: 'rgba(237, 163, 59, .5)',
+        width: '4em',
+        height: '4em',
         borderRadius: '3em',
         padding: 0,
+        marginLeft: 125,
+        fontFamily: "'Amatic SC', cursive",
       },
       hover: {
         width: '100%',
         padding: 20,
         borderRadius: 0,
+        marginLeft: 0,
       }
     };
 
@@ -44,7 +48,13 @@ var Countries = React.createClass({
     );
 
     var countries = COUNTRIES_DATA.map((country) => {
-      return <Country key={country.name} name={country.name}/>
+      return (
+        <Country
+          key={country.name}
+          name={country.name}
+          display={!this.state.hovered}
+        />
+      )
     });
 
     return(
