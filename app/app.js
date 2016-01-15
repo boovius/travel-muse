@@ -1,13 +1,14 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-require('./normalize.css');
-var LandingPage = require('./landing_page.js');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './normalize.css';
+import LandingPage from './landing_page.js';
+import MotionBoxes from './motion.js';
 
 var App = React.createClass({
-  render() {
-    return(
+  render () {
+    return (
       <LandingPage />
-    );
+    )
   }
 });
 
