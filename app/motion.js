@@ -1,10 +1,10 @@
 import React from 'react';
 import merge from 'merge';
-import {Motion, StaggeredMotion,  spring} from 'react-motion';
+import {Motion, spring} from 'react-motion';
 
 const INDEX = [1,2,3];
 
-var MotionBoxes = React.createClass({
+const MotionBoxes = React.createClass({
   getInitialState (){
     return {
       isOpen: false
@@ -26,7 +26,8 @@ var MotionBoxes = React.createClass({
 
   style(index) {{
     if (this.state.isOpen) {
-      return {left: spring(index * -100)};
+      let factor = index % 2 === 0 ? 1 : -1;
+      return {left: spring(index * factor * 100)};
     } else {
       return {left: spring(this.childWidth())};
     }
@@ -96,9 +97,7 @@ var MotionBoxes = React.createClass({
               style={this.style(index)}
               >
               {style =>
-                <div
-                  style={merge(this.childStyleBase(), {left: style.left})}>
-                </div>
+                <div style={merge(this.childStyleBase(), {left: style.left})} />
               }
             </Motion>
           );
