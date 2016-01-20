@@ -2,6 +2,8 @@ import React from 'react';
 import merge from 'merge';
 import {Motion, StaggeredMotion,  spring} from 'react-motion';
 
+const INDEX = [1,2,3];
+
 var MotionBoxes = React.createClass({
   getInitialState (){
     return {
@@ -22,9 +24,9 @@ var MotionBoxes = React.createClass({
     }
   }},
 
-  style() {{
+  style(index) {{
     if (this.state.isOpen) {
-      return {left: spring(-300)};
+      return {left: spring(index * -100)};
     } else {
       return {left: spring(this.childWidth())};
     }
@@ -49,13 +51,13 @@ var MotionBoxes = React.createClass({
   },
 
   childWidth() {{
-    let childWidth = this.baseStyles().parentWidth/2;
+    let childWidth = this.baseStyles().parentWidth/2 - 20;
     //console.log('value of childWidth is ', childWidth);
     return childWidth;
   }},
 
   childHeight() {{
-    let height = this.baseStyles().parentHeight/2;
+    let height = this.baseStyles().parentHeight/2 - 20;
     //console.log('value of childHeight is ', height);
     return height;
   }},
@@ -87,16 +89,20 @@ var MotionBoxes = React.createClass({
   render() {
     return(
       <div id='parent' style={this.parentStyle()} onClick={this.handleClick}>
-        <Motion
-          defaultStyle={this.defaultStyle()}
-          style={this.style()}
-          >
-          {style =>
-            <div
-              style={merge(this.childStyleBase(), {left: style.left})}>
-            </div>
-          }
-        </Motion>
+        {INDEX.map(index => {
+          return (
+            <Motion
+              defaultStyle={this.defaultStyle()}
+              style={this.style(index)}
+              >
+              {style =>
+                <div
+                  style={merge(this.childStyleBase(), {left: style.left})}>
+                </div>
+              }
+            </Motion>
+          );
+        })}
       </div>
     );
   }
