@@ -7,7 +7,8 @@ import MotionBoxes from './motion.js';
 var App = React.createClass({
   render () {
     return (
-      <LandingPage />
+      //<LandingPage />
+      <MotionBoxes />
     )
   }
 });
