@@ -14,45 +14,88 @@ var MotionBoxes = React.createClass({
     this.setState({isOpen: !this.state.isOpen});
   },
 
-  render() {
-    let parentWidth = 200;
-    let parentHeight = 200;
-    let childWidth = parentWidth/2;
-    let childHeight = parentHeight/2;
+  defaultStyle() {{
+    if (this.state.isOpen) {
+      return {left: spring(-300)};
+    } else {
+      return {left: spring(this.childWidth())};
+    }
+  }},
 
-    let parentStyle = {
-      width: parentWidth,
-      height: parentHeight,
+  style() {{
+    if (this.state.isOpen) {
+      return {left: spring(-300)};
+    } else {
+      return {left: spring(this.childWidth())};
+    }
+  }},
+
+  baseStyles() {
+    return {
+      parentWidth: 200,
+      parentHeight: 200,
+    }
+  },
+
+  parentStyle() {
+    return {
+      width: this.baseStyles().parentWidth,
+      height: this.baseStyles().parentHeight,
       position: 'absolute',
       top: 100,
       left: 500,
       backgroundColor: 'blue',
-    };
+    }
+  },
 
-    let childStyleBase = {
-      width: parentWidth/2,
-      height: 100,
+  childWidth() {{
+    let childWidth = this.baseStyles().parentWidth/2;
+    //console.log('value of childWidth is ', childWidth);
+    return childWidth;
+  }},
+
+  childHeight() {{
+    let height = this.baseStyles().parentHeight/2;
+    //console.log('value of childHeight is ', height);
+    return height;
+  }},
+
+  childTop() {{
+    let top = (this.baseStyles().parentHeight - this.childHeight())/2;
+    //console.log('value of childTop is ', top);
+    return top;
+  }},
+
+  childLeft() {{
+    let left = (this.baseStyles().parentWidth - this.childWidth())/2;
+    //console.log('value of childLeft is ', left);
+    return left;
+  }},
+
+  childStyleBase() {
+    return {
+      width: this.childWidth(),
+      height: this.childHeight(),
       position: 'absolute',
-      top: (parentHeight - childHeight)/2,
+      top: this.childTop(),
       backgroundColor: 'red',
-      left: (parentWidth - childWidth)/2,
+      left: this.childLeft(),
       zIndex: -1,
-    };
+    }
+  },
 
+  render() {
     return(
-      <div id='parent' style={parentStyle} onClick={this.handleClick}>
+      <div id='parent' style={this.parentStyle()} onClick={this.handleClick}>
         <Motion
-          defaultStyle={this.state.isOpen ? {left: spring(-300)} : {left: spring(childWidth)}}
-          style={this.state.isOpen ? {left: spring(-300)} : {left: spring(childWidth)}}
+          defaultStyle={this.defaultStyle()}
+          style={this.style()}
           >
-          {(style) => {
-            return (
-              <div
-                id='child'
-                style={merge(childStyleBase, {left: style.left})}>
-              </div>
-            )
-          }}
+          {style =>
+            <div
+              style={merge(this.childStyleBase(), {left: style.left})}>
+            </div>
+          }
         </Motion>
       </div>
     );
