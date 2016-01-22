@@ -10,10 +10,12 @@ let MotionCountry = React.createClass({
         style={}
         >
         <Country
-          name={country.name}
+          name={this.props.name}
           display={!this.state.hovered}
         />
       </Motion>
     );
   }
 });
+
+module.exports = MotionCountry;
