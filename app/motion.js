@@ -1,8 +1,7 @@
 import React from 'react';
 import merge from 'merge';
-import {Motion, spring} from 'react-motion';
 
-const INDEX = [1,2,3];
+const INDEX = [0,1,2,3];
 
 const MotionBoxes = React.createClass({
   getInitialState (){
@@ -26,8 +25,11 @@ const MotionBoxes = React.createClass({
 
   style(index) {{
     if (this.state.isOpen) {
+      if (index === 0) {
+        return {left: spring(0)}
+      }
       let factor = index % 2 === 0 ? 1 : -1;
-      return {left: spring(index * factor * 100)};
+      return {left: spring(Math.floor(((index/2) + .5)) * factor * 100)};
     } else {
       return {left: spring(this.childWidth())};
     }
@@ -47,7 +49,7 @@ const MotionBoxes = React.createClass({
       position: 'absolute',
       top: 100,
       left: 500,
-      backgroundColor: 'blue',
+      //backgroundColor: 'blue',
     }
   },
 
