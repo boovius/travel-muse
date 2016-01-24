@@ -1,18 +1,21 @@
 import React from 'react';
 import merge from 'merge';
 import Country from './country';
+import {Motion, spring} from 'react-motion';
 
 let MotionCountry = React.createClass({
   render() {
     return(
       <Motion
-        defaultStyle={}
-        style={}
+        style={{left: spring(-300)}}
         >
-        <Country
-          name={this.props.name}
-          display={!this.state.hovered}
-        />
+        {style =>
+          <Country
+            name={this.props.name}
+            display={this.props.display}
+            childStyles={this.props.childStyles}
+          />
+        }
       </Motion>
     );
   }

@@ -1,10 +1,10 @@
-var React = require('react');
-var Countries = require('./countries.js');
-var merge = require('merge');
+import React from 'react';
+import merge from 'merge';
+import CountriesPresenter from './countries_presenter';
 
-var backgroundImage = require('./src/through_the_glasses.jpg');
+let backgroundImage = require('./src/through_the_glasses.jpg');
 
-var backgroundStyles = {
+let backgroundStyles = {
   backgroundImage: 'url(' + backgroundImage + ')',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -17,7 +17,7 @@ var backgroundStyles = {
 };
 
 
-var titleBarStyles = {
+let titleBarStyles = {
   position: 'absolute',
   top: '20%',
   width: '100%',
@@ -27,17 +27,17 @@ var titleBarStyles = {
   alignItems: 'center',
 }
 
-var titleWordStyles = {
+let titleWordStyles = {
   fontSize: '8em',
   color: 'white',
   fontFamily: "'Amatic SC', cursive",
 }
 
-var firstWordStyles = {
+let firstWordStyles = {
   marginLeft: '10%',
 }
 
-var Title = React.createClass({
+let Title = React.createClass({
   render() {
     return(
       <div id='title-bar' style={titleBarStyles}>
@@ -52,22 +52,12 @@ var Title = React.createClass({
   }
 });
 
-var countriesDrawerStyles = {
-  position: 'absolute',
-  bottom: '2%',
-  width: '100%',
-  display: 'flex',
-  flexFlow: 'row wrap',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-}
-
-var LandingPage = React.createClass({
+let LandingPage = React.createClass({
   render() {
     return (
       <div id='background' style={backgroundStyles}>
         <Title />
-        <Countries drawerStyles={countriesDrawerStyles}/>
+        <CountriesPresenter />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import merge from 'merge';
 
-var Country = React.createClass({
+let Country = React.createClass({
   getInitialState (){
     return {
       hovered: false
@@ -35,13 +35,15 @@ var Country = React.createClass({
     var hoverStateStyle = merge(
         this.state.hovered && styles.hover,
         styles.country,
+        this.props.childStyles,
         this.props.display && styles.display
     );
 
     return(
-      <li style={hoverStateStyle}
-      onMouseEnter={this.toggleHover}
-      onMouseLeave={this.toggleHover}
+      <li
+        style={hoverStateStyle}
+        onMouseEnter={this.toggleHover}
+        onMouseLeave={this.toggleHover}
       >{this.props.name}</li>
     );
   }
